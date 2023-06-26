@@ -59,9 +59,18 @@ class GudangController extends Controller
      */
     public function show($id)
     {
-        // dd($id);
-        $data = Gudang::find($id)->first();
-        return view('gudang.show',compact('data'));
+        try {
+            //code...
+            $data = Gudang::where('id',$id)->first();
+            // dd($data);
+            if($data == null){
+                return redirect()->route('gudang.index');
+            }
+            return view('gudang.show',compact('data'));
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->route('gudang.index');
+        }
     }
     
 
@@ -73,7 +82,7 @@ class GudangController extends Controller
      */
     public function edit(Gudang $gudang)
     {
-        //
+        
     }
 
     /**
