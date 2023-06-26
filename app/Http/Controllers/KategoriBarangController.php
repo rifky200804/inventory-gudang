@@ -26,8 +26,7 @@ class KategoriBarangController extends Controller
      */
     public function create()
     {
-        $gudang = Gudang::all();
-        return view('kategori.create', compact('gudang'));
+        return view('kategori.create');
     }
 
     /**
@@ -43,7 +42,6 @@ class KategoriBarangController extends Controller
         //akses kolom kode terus isi dengan data input kode user
         $kategori->kode_kategori = $request->kode_kategori;
         $kategori->nama_kategori = $request->nama_kategori;
-        $kategori->gudang_id = $request->gudang_id;
         //simpen data ke database
         $kategori->save();
         //nampilin ke url produk
@@ -81,9 +79,8 @@ class KategoriBarangController extends Controller
     public function edit($id)
     {
         //arahkan ke halaman edit
-        $gudang = Gudang::all();
         $kategori = KategoriBarang::where('id', $id)->first();
-        return view('kategori.edit', compact('kategori','gudang'));
+        return view('kategori.edit', compact('kategori'));
     }
 
     /**
@@ -98,7 +95,6 @@ class KategoriBarangController extends Controller
         $kategori = KategoriBarang::find($id);
         $kategori->kode_kategori = $request->kode_kategori;
         $kategori->nama_kategori = $request->nama_kategori;
-        $kategori->gudang_id = $request->gudang_id;
         $kategori->save();
         return redirect()->route('kategori.index');
     }

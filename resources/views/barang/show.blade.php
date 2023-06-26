@@ -8,9 +8,11 @@
 <body>
     <h1>Data Kategori {{$data->nama_kategori}}</h1>
     <ul>
-        <li>Nama Kategori : {{$data->nama_kategori}}</li>
-        <li>Kode Kategori : {{$data->kode_kategori}}</li>
+        <li>Nama Barang : {{$data->nama_barang}}</li>
+        <li>Kode Barang : {{$data->kode_barang}}</li>
+        <li>Kategori ID : {{$data->kategori_id}}</li>
+        <li>Gudang ID : {{$data->gudang_id}}</li>
     </ul>
-    <a href="{{route('kategori.index')}}">Kembali</a>
+    <a href="{{route('barang.index')}}">Kembali</a>
 </body>
 </html>

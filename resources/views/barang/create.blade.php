@@ -7,22 +7,32 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Form Input Barang</h1>
-    <form method="POST" action="{{ url('kategori/store') }}" enctype="multipart/form-data">
+    <h1>Form Barang</h1>
+    <form method="POST" action="{{ url('barang/store') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group row">
-            <label for="kode_kategori" class="col-4 col-form-label">Kode Kategori</label>
+            <label for="kode_barang" class="col-4 col-form-label">Kode Barang</label>
             <div class="col-8">
-                <input id="kode_kategori" name="kode_kategori" type="text" class="form-control">
+                <input id="kode_barang" name="kode_barang" type="text" class="form-control">
             </div>
         </div>
         <div class="form-group row">
-            <label for="nama_kategori" class="col-4 col-form-label">Nama Kategori</label>
+            <label for="nama_barang" class="col-4 col-form-label">Nama Barang</label>
             <div class="col-8">
-                <input id="nama_kategori" name="nama_kategori" type="text" class="form-control">
+                <input id="nama_barang" name="nama_barang" type="text" class="form-control">
             </div>
         </div>
-        {{-- <div class="form-group row">
+        <div class="form-group row">
+            <label for="kategori_id" class="col-4 col-form-label">Kategori ID</label>
+            <div class="col-8">
+                <select id="kategori_id" name="kategori_id" class="custom-select">
+                    @foreach ($kategori as $k)
+                        <option value="{{ $k->id }}">{{ $k->nama_kategori }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="gudang_id" class="col-4 col-form-label">Gudang ID</label>
             <div class="col-8">
                 <select id="gudang_id" name="gudang_id" class="custom-select">
@@ -31,7 +41,7 @@
                     @endforeach
                 </select>
             </div>
-        </div> --}}
+        </div>
         <div class="form-group row">
             <div class="offset-4 col-8">
                 <button name="submit" type="submit" class="btn btn-primary">Submit</button>

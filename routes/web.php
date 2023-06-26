@@ -37,3 +37,13 @@ Route::group(['prefix'=>'kategori','as'=>'kategori.'], function(){
     Route::put('/update/{id}', 'KategoriBarangController@update')->name('update');
     Route::get('/delete/{id}', 'KategoriBarangController@destroy')->name('delete');
 });
+
+Route::group(['prefix'=>'barang','as'=>'barang.'], function(){
+    Route::get('/', 'BarangController@index')->name('index');
+    Route::get('/create', 'BarangController@create')->name('create');
+    Route::post('/store', 'BarangController@store')->name('store');
+    Route::get('/{id}', 'BarangController@show')->name('show');
+    Route::get('/edit/{id}', 'BarangController@edit')->name('edit');
+    Route::put('/update/{id}', 'BarangController@update')->name('update');
+    Route::get('/delete/{id}', 'BarangController@destroy')->name('delete');
+});
