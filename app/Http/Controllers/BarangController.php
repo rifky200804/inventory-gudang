@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\KategoriProduk;
+use App\Barang;
 use Illuminate\Http\Request;
 
-class KategoriProdukController extends Controller
+class BarangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class KategoriProdukController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\KategoriProduk  $kategoriProduk
+     * @param  \App\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function show(KategoriProduk $kategoriProduk)
+    public function show(Barang $barang)
     {
         //
     }
@@ -52,10 +52,10 @@ class KategoriProdukController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\KategoriProduk  $kategoriProduk
+     * @param  \App\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit(KategoriProduk $kategoriProduk)
+    public function edit(Barang $barang)
     {
         //
     }
@@ -64,10 +64,10 @@ class KategoriProdukController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\KategoriProduk  $kategoriProduk
+     * @param  \App\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, KategoriProduk $kategoriProduk)
+    public function update(Request $request, Barang $barang)
     {
         //
     }
@@ -75,10 +75,10 @@ class KategoriProdukController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\KategoriProduk  $kategoriProduk
+     * @param  \App\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(KategoriProduk $kategoriProduk)
+    public function destroy(Barang $barang)
     {
         //
     }
