@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Gudang;
 use App\KategoriBarang;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class KategoriBarangController extends Controller
      */
     public function index()
     {
-        //
+        $data = KategoriBarang::all();
+        return view('kategori.index',compact('data'));
     }
 
     /**
@@ -24,7 +26,8 @@ class KategoriBarangController extends Controller
      */
     public function create()
     {
-        //
+        $gudang_id = Gudang::all();
+        return view('kategori.create', compact('gudang_id'));
     }
 
     /**
@@ -35,7 +38,16 @@ class KategoriBarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //membuat tambah data
+        $kategori = new KategoriBarang;
+        //akses kolom kode terus isi dengan data input kode user
+        $kategori->kode_kategori = $request->kode_kategori;
+        $kategori->nama_kategori = $request->nama_kategori;
+        $kategori->gudang_id = $request->gudang_id;
+        //simpen data ke database
+        $kategori->save();
+        //nampilin ke url produk
+        return redirect()->route('kategori.index');
     }
 
     /**
@@ -44,9 +56,20 @@ class KategoriBarangController extends Controller
      * @param  \App\KategoriBarang  $kategoriBarang
      * @return \Illuminate\Http\Response
      */
-    public function show(KategoriBarang $kategoriBarang)
+    public function show($id)
     {
-        //
+        try {
+            //code...
+            $data = KategoriBarang::where('id', $id)->first();
+            // dd($data);
+            if($data == null){
+                return redirect()->route('kategori.index');
+            }
+            return view('kategori.show',compact('data'));
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->route('kategori.index');
+        }
     }
 
     /**
@@ -55,9 +78,11 @@ class KategoriBarangController extends Controller
      * @param  \App\KategoriBarang  $kategoriBarang
      * @return \Illuminate\Http\Response
      */
-    public function edit(KategoriBarang $kategoriBarang)
+    public function edit($id)
     {
-        //
+        //arahkan ke halaman edit
+        $kategori = KategoriBarang::where('id', $id)->first();
+        return view('kategori.edit', compact('kategori'));
     }
 
     /**
@@ -67,9 +92,14 @@ class KategoriBarangController extends Controller
      * @param  \App\KategoriBarang  $kategoriBarang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, KategoriBarang $kategoriBarang)
+    public function update(Request $request, $id)
     {
-        //
+        $kategori = KategoriBarang::find($id);
+        $kategori->kode_kategori = $request->kode_kategori;
+        $kategori->nama_kategori = $request->nama_kategori;
+        $kategori->gudang_id = $request->gudang_id;
+        $kategori->save();
+        return redirect()->route('kategori.index');
     }
 
     /**
@@ -78,8 +108,11 @@ class KategoriBarangController extends Controller
      * @param  \App\KategoriBarang  $kategoriBarang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(KategoriBarang $kategoriBarang)
+    public function destroy($id)
     {
-        //
+        $kategori = KategoriBarang::find($id);
+        $kategori->delete();
+
+        return redirect()->route('kategori.index')->with('success', 'kategori berhasil dihapus');
     }
 }
