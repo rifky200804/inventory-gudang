@@ -18,8 +18,8 @@ class CreateKategoriBarangsTable extends Migration
             $table->string('kode_kategori',100);
             $table->string('nama_kategori',100);
             $table->integer('gudang_id');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('created_by',100)->nullable();
+            $table->string('updated_by',100)->nullable();
             $table->timestamps();
         });
     }

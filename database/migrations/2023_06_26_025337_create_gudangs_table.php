@@ -18,8 +18,8 @@ class CreateGudangsTable extends Migration
             $table->string('kode_gudang',100);
             $table->string('nama_gudang',100);
             $table->timestamps();
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('created_by',100)->nullable();
+            $table->string('updated_by',100)->nullable();
         });
     }
 
