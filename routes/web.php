@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::group(['prefix'=>'gudang','as'=>'gudang.'], function(){
+    Route::get('/', 'GudangController@index')->name('index');
+    Route::get('/{id}', 'GudangController@show')->name('show');
+});

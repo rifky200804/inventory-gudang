@@ -14,7 +14,8 @@ class GudangController extends Controller
      */
     public function index()
     {
-        //
+        $data = Gudang::all();
+        return view('gudang.index',compact('data'));
     }
 
     /**
@@ -44,9 +45,11 @@ class GudangController extends Controller
      * @param  \App\Gudang  $gudang
      * @return \Illuminate\Http\Response
      */
-    public function show(Gudang $gudang)
+    public function show($id)
     {
-        //
+        // dd($id);
+        $data = Gudang::find($id)->first();
+        return view('gudang.show',compact('data'));
     }
 
     /**
