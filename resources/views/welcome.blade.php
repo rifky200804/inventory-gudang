@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    OKE
+                    ASOMASOW
                 </div>
 
                 <div class="links">
