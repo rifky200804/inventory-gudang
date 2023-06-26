@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Data Gudang</h1>
+    <a class="btn btn-primary" href="{{ url('gudang/create') }}">Create</a>
     <table cellspacing = "0px" cellpadding="5px" border="1">
         <thead>
             <tr>

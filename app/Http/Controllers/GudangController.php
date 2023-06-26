@@ -25,7 +25,11 @@ class GudangController extends Controller
      */
     public function create()
     {
-        //
+        // simpen data tabel produkdari mode
+        // // Simpan Data Tabel Kategori dari Model
+        // $kategori_produk = KategoriProduk::all();
+        // Kirim data ke view Create
+        return view('gudang.create');
     }
 
     /**
@@ -36,7 +40,15 @@ class GudangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //membuat tambah data
+        $gudang = new Gudang;
+        //akses kolom kode terus isi dengan data input kode user
+        $gudang->kode_gudang = $request->kode_gudang;
+        $gudang->nama_gudang = $request->nama_gudang;
+        //simpen data ke database
+        $gudang->save();
+        //nampilin ke url produk
+        return redirect()->route('gudang.index');
     }
 
     /**
@@ -51,6 +63,7 @@ class GudangController extends Controller
         $data = Gudang::find($id)->first();
         return view('gudang.show',compact('data'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
