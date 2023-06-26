@@ -22,5 +22,9 @@ Route::group(['prefix'=>'gudang','as'=>'gudang.'], function(){
     Route::get('/', 'GudangController@index')->name('index');
     Route::get('/create', 'GudangController@create')->name('create');
     Route::post('/store', 'GudangController@store')->name('store');
+    
     Route::get('/{id}', 'GudangController@show')->name('show');
+    Route::get('/edit/{id}', 'GudangController@edit')->name('edit');
+    Route::put('/update/{id}', 'GudangController@update')->name('update');
+    Route::get('/delete/{id}', 'GudangController@destroy')->name('delete');
 });

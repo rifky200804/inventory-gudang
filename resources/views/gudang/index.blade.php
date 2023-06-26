@@ -26,6 +26,9 @@
                 <td>{{$value->nama_gudang}}</td>
                 <td>
                     <a href="{{ route('gudang.show',$value->id) }}">Show</a>
+                    <a href="{{ route('gudang.edit',$value->id) }}">Edit</a>
+                    <a href="{{ url('gudang/delete/' . $value->id) }}" class="btn btn-danger"
+                        onclick="return confirm('Apakah Anda yakin ingin menghapus produk?')">Delete</a>
                 </td>
             </tr>
         </tbody>

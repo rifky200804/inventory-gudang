@@ -80,9 +80,11 @@ class GudangController extends Controller
      * @param  \App\Gudang  $gudang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gudang $gudang)
+    public function edit($id)
     {
-        
+        //arahkan ke halaman edit
+        $gudang = Gudang::where('id', $id)->first();
+        return view('gudang.edit', compact('gudang'));
     }
 
     /**
@@ -92,9 +94,13 @@ class GudangController extends Controller
      * @param  \App\Gudang  $gudang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gudang $gudang)
+    public function update(Request $request, $id)
     {
-        //
+        $gudang = Gudang::find($id);
+        $gudang->kode_gudang = $request->kode_gudang;
+        $gudang->nama_gudang = $request->nama_gudang;
+        $gudang->save();
+        return redirect()->route('gudang.index');
     }
 
     /**
@@ -103,8 +109,11 @@ class GudangController extends Controller
      * @param  \App\Gudang  $gudang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gudang $gudang)
+    public function destroy($id)
     {
-        //
+        $gudang = Gudang::find($id);
+        $gudang->delete();
+
+        return redirect()->route('gudang.index')->with('success', 'gudang berhasil dihapus');
     }
 }
