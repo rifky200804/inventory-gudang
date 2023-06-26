@@ -26,8 +26,8 @@ class KategoriBarangController extends Controller
      */
     public function create()
     {
-        $gudang_id = Gudang::all();
-        return view('kategori.create', compact('gudang_id'));
+        $gudang = Gudang::all();
+        return view('kategori.create', compact('gudang'));
     }
 
     /**
@@ -81,8 +81,9 @@ class KategoriBarangController extends Controller
     public function edit($id)
     {
         //arahkan ke halaman edit
+        $gudang = Gudang::all();
         $kategori = KategoriBarang::where('id', $id)->first();
-        return view('kategori.edit', compact('kategori'));
+        return view('kategori.edit', compact('kategori','gudang'));
     }
 
     /**

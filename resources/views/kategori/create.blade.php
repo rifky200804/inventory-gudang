@@ -26,7 +26,7 @@
             <label for="gudang_id" class="col-4 col-form-label">Gudang ID</label>
             <div class="col-8">
                 <select id="gudang_id" name="gudang_id" class="custom-select">
-                    @foreach ($gudang_id as $g)
+                    @foreach ($gudang as $g)
                         <option value="{{ $g->id }}">{{ $g->nama_gudang }}</option>
                     @endforeach
                 </select>

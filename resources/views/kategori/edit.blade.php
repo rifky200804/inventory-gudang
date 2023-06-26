@@ -24,11 +24,9 @@
         </div>
         <div class="col-8">
             <select id="gudang_id" name="gudang_id" class="custom-select">
-                @isset($gudang_id)
-                    @foreach ($gudang_id as $g)
+                    @foreach ($gudang as $g)
                         <option value="{{ $g->id }}">{{ $g->nama_gudang }}</option>
                     @endforeach
-                @endisset
             </select>
         </div>
         
