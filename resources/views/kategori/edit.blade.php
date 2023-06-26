@@ -17,17 +17,21 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="nama" class="col-4 col-form-label">Nama Kategori</label>
+            <label for="nama_kategori" class="col-4 col-form-label">Nama Kategori</label>
             <div class="col-8">
                 <input id="nama_kategori" name="nama_kategori" type="text" class="form-control" value="{{ $kategori->nama_kategori }}">
             </div>
         </div>
         <div class="col-8">
-            <select id="gudang_id" name="gudang_id" class="custom-select">
+            <label for="gudang_id" class="col-4 col-form-label">Gudang ID</label>
+            <div class="col-8">
+                <select id="gudang_id" name="gudang_id" class="custom-select">
                     @foreach ($gudang as $g)
                         <option value="{{ $g->id }}">{{ $g->nama_gudang }}</option>
                     @endforeach
             </select>
+            </div>
+            
         </div>
         
         
