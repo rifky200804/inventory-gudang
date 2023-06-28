@@ -13,9 +13,14 @@ class KategoriBarangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = KategoriBarang::paginate(10);
+        if(isset($request->keyword) && $request->keyword != ""){
+            $keyword = $request->keyword;
+            $data = $data = KategoriBarang::where('nama_kategori','LIKE','%'.$keyword.'%')->orWhere('kode_kategori','LIKE','%'.$keyword.'%')->paginate(10);
+        }else{
+            $data = KategoriBarang::paginate(10);
+        }
         return view('kategori.index',compact('data'));
     }
 

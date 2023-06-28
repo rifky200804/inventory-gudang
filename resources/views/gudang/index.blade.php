@@ -7,6 +7,14 @@
             <p class="card-description">
                 <code><a href="">Tambah Data</a></code>
             </p>
+            <form action="{{ route('gudang.index') }}" method="get" class="d-flex justify-content-end">
+                <div class="col-md-3 col-sm-6 d-flex justify-content-end">
+                    <input type="text" name="keyword" class="form-control" style="" placeholder="search...">
+                </div>
+                <div class="col-md-1 col-sm1" >
+                    <button type="submit" class="btn btn-info" style=""><i class="typcn typcn-zoom"></i></button>
+                </div>
+            </form>
             <div class="table-responsive">
                 <table class="table">
                     <thead>

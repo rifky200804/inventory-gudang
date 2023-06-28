@@ -12,9 +12,14 @@ class GudangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Gudang::paginate(10);
+        if(isset($request->keyword) && $request->keyword != ""){
+            $keyword = $request->keyword;
+            $data = $data = Gudang::where('nama_gudang','LIKE','%'.$keyword.'%')->orWhere('kode_gudang','LIKE','%'.$keyword.'%')->paginate(10);
+        }else{
+            $data = Gudang::paginate(10);
+        }
         return view('gudang.index',compact('data'));
     }
 
