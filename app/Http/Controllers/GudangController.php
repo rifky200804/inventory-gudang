@@ -14,7 +14,7 @@ class GudangController extends Controller
      */
     public function index()
     {
-        $data = Gudang::all();
+        $data = Gudang::paginate(10);
         return view('gudang.index',compact('data'));
     }
 
@@ -25,10 +25,6 @@ class GudangController extends Controller
      */
     public function create()
     {
-        // simpen data tabel produkdari mode
-        // // Simpan Data Tabel Kategori dari Model
-        // $kategori_produk = KategoriProduk::all();
-        // Kirim data ke view Create
         return view('gudang.create');
     }
 
@@ -60,9 +56,7 @@ class GudangController extends Controller
     public function show($id)
     {
         try {
-            //code...
             $data = Gudang::where('id',$id)->first();
-            // dd($data);
             if($data == null){
                 return redirect()->route('gudang.index');
             }

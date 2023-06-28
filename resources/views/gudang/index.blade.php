@@ -1,39 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory</title>
-</head>
-<body>
-    <h1>Data Gudang</h1>
-    <a class="btn btn-primary" href="{{ url('gudang/create') }}">Create</a>
-    <table cellspacing = "0px" cellpadding="5px" border="1">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Kode Gudang</th>
-                <th>Nama Gudang</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        @php $no = 0; @endphp
-        @foreach($data as $key => $value)
-        <tbody>
-            <tr>
-                <td>{{$no+1}}</td>
-                <td>{{$value->kode_gudang}}</td>
-                <td>{{$value->nama_gudang}}</td>
-                <td>
-                    <a href="{{ route('gudang.show',$value->id) }}">Show</a>
-                    <a href="{{ route('gudang.edit',$value->id) }}">Edit</a>
-                    <a href="{{ url('gudang/delete/' . $value->id) }}" class="btn btn-danger"
-                        onclick="return confirm('Apakah Anda yakin ingin menghapus produk?')">Delete</a>
-                </td>
-            </tr>
-        </tbody>
-        @php $no++; @endphp
-        @endforeach
-    </table>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('content')
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Data Gudang</h4>
+            <p class="card-description">
+                <code><a href="">Tambah Data</a></code>
+            </p>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode Gudang</th>
+                            <th>Nama Gudang</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    @php $no = 0; @endphp
+                    @foreach($data as $key => $value)
+                    <tbody>
+                        <tr>
+                            <td class="">{{$no+1}}</td>
+                            <td>{{$value->kode_gudang}}</td>
+                            <td>{{$value->nama_gudang}}</td>
+                            <td>
+                                <a href="{{ route('gudang.show',$value->id) }}" class="badge badge-info">Show</a>
+                                <a href="{{ route('gudang.edit',$value->id) }}" class="badge badge-warning">Edit</a>
+                                <a href="{{ url('gudang/delete/' . $value->id) }}" class="badge badge-danger"
+                                    onclick="return confirm('Apakah Anda yakin ingin menghapus produk?')">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    @php $no++; @endphp
+                    @endforeach
+                </table>
+                <div class="row">
+                    <div class="col-6 d-flex justify-content-start">
+                            Halaman : {{ $data->currentPage() }} <br/>
+                            Jumlah Data : {{ $data->total() }} <br/>
+                            Data Per Halaman : {{ $data->perPage() }} <br/>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                            {{ $data->links() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection

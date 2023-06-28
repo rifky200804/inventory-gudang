@@ -15,7 +15,7 @@ class KategoriBarangController extends Controller
      */
     public function index()
     {
-        $data = KategoriBarang::all();
+        $data = KategoriBarang::paginate(10);
         return view('kategori.index',compact('data'));
     }
 
