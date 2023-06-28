@@ -37,13 +37,13 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                        aria-controls="ui-basic">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false"
+                        aria-controls="ui-basic2">
                         <i class="typcn typcn-briefcase menu-icon"></i>
                         <span class="menu-title">Gudang</span>
                         <i class="typcn typcn-chevron-right menu-arrow"></i>
                     </a>
-                    <div class="collapse" id="ui-basic">
+                    <div class="collapse" id="ui-basic2">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link"
                                     href="{{route('gudang.index')}}">Data Gudang</a></li>
@@ -51,13 +51,13 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
-                        aria-controls="form-elements">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false"
+                        aria-controls="ui-basic3">
                         <i class="typcn typcn-film menu-icon"></i>
                         <span class="menu-title">Kategori Barang</span>
                         <i class="menu-arrow"></i>
                     </a>
-                    <div class="collapse" id="form-elements">
+                    <div class="collapse" id="ui-basic3">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link" href="{{route('kategori.index')}}">Data Kategori Barang</a></li>
                         </ul>

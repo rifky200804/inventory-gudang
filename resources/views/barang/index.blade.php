@@ -4,7 +4,7 @@
         <div class="card-body">
             <h4 class="card-title">Data Barang</h4>
             <p class="card-description">
-                <code><a href="{{ route('kategori.create') }}">Tambah Data Barang</a></code>
+                <code><a href="{{ route('barang.create') }}">Tambah Data Barang</a></code>
             </p>
             <div class="table-responsive">
                 <table class="table">
@@ -13,8 +13,8 @@
                             <th>No</th>
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
-                            <th>Kategori ID</th>
-                            <th>Gudang ID</th>
+                            <th>Kategori</th>
+                            <th>Gudang</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -25,8 +25,8 @@
                                 <td>{{ $no + 1 }}</td>
                                 <td>{{ $value->kode_barang }}</td>
                                 <td>{{ $value->nama_barang }}</td>
-                                <td>{{ $value->kategori_id }}</td>
-                                <td>{{ $value->gudang_id }}</td>
+                                <td>{{ $value->nama_kategori }}</td>
+                                <td>{{ $value->nama_gudang }}</td>
                                 <td>
                                     <a href="{{ route('barang.show', $value->id) }}" class="badge badge-info">Show</a>
                                     <a href="{{ route('barang.edit', $value->id) }}" class="badge badge-warning">Edit</a>

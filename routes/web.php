@@ -47,3 +47,13 @@ Route::group(['prefix'=>'barang','as'=>'barang.'], function(){
     Route::put('/update/{id}', 'BarangController@update')->name('update');
     Route::get('/delete/{id}', 'BarangController@destroy')->name('delete');
 });
+
+Route::group(['prefix'=>'user','as'=>'user.'], function(){
+    Route::get('/', 'UserController@index')->name('index');
+    Route::get('/create', 'UserController@create')->name('create');
+    Route::post('/store', 'UserController@store')->name('store');
+    Route::get('/{id}', 'UserController@show')->name('show');
+    Route::get('/edit/{id}', 'UserController@edit')->name('edit');
+    Route::put('/update/{id}', 'UserController@update')->name('update');
+    Route::get('/delete/{id}', 'UserController@destroy')->name('delete');
+});

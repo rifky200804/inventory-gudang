@@ -12,7 +12,6 @@ class KategoriBarang extends Model
         'id',
         'kode_kategori',
         'nama_kategori',
-        'gudang_id'
     ];
 
     protected $primaryKey = 'id';

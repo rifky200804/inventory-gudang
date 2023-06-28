@@ -6,6 +6,7 @@ use App\Barang;
 use App\Gudang;
 use App\KategoriBarang;
 use Illuminate\Http\Request;
+use DB;
 
 class BarangController extends Controller
 {
@@ -16,8 +17,12 @@ class BarangController extends Controller
      */
     public function index()
     {
-        
-        $data = Barang::paginate(10);
+        $data = DB::table('barangs as a')
+                ->join('kategori_barangs as b','a.kategori_id','=','b.id')
+                ->join('gudangs as c','a.gudang_id','=','c.id')
+                ->select('a.*','b.nama_kategori as nama_kategori','c.nama_gudang as nama_gudang')
+        ->paginate(10);
+        // dd($data);
         return view('barang.index',compact('data'));
     }
 
