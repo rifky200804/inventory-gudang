@@ -48,7 +48,7 @@ class UserController extends Controller
         //akses kolom kode terus isi dengan data input kode user
         $user->name = $request->name;
         $user->username = $request->username;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->role = $request->role;
         //simpen data ke database
         $user->save();
