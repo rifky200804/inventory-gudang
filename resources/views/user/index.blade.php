@@ -21,7 +21,6 @@
                             <th>No</th>
                             <th>Nama User</th>
                             <th>Username</th>
-                            <th>Password</th>
                             <th>Role</th>
                             <th>Aksi</th>
                         </tr>
@@ -33,7 +32,6 @@
                                 <td>{{ $no + 1 }}</td>
                                 <td>{{ $value->name }}</td>
                                 <td>{{ $value->username }}</td>
-                                <td>{{ $value->password }}</td>
                                 <td>{{ $value->role }}</td>
                                 <td>
                                     <a href="{{ route('user.show', $value->id) }}" class="badge badge-info">Show</a>
