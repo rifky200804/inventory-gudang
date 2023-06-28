@@ -15,13 +15,21 @@ class BarangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $data = DB::table('barangs as a')
                 ->join('kategori_barangs as b','a.kategori_id','=','b.id')
                 ->join('gudangs as c','a.gudang_id','=','c.id')
-                ->select('a.*','b.nama_kategori as nama_kategori','c.nama_gudang as nama_gudang')
-        ->paginate(10);
+                ->select('a.*','b.nama_kategori as nama_kategori','c.nama_gudang as nama_gudang');
+
+        if(isset($request->keyword) && $request->keyword != ""){
+            $keyword = $request->keyword;
+            $data = $data->where("a.kode_barang",'LIKE','%'.$keyword.'%')
+                    ->orWhere("a.nama_barang",'LIKE','%'.$keyword.'%')
+                    ->orWhere("b.nama_kategori",'LIKE','%'.$keyword.'%')
+                    ->orWhere("c.nama_gudang",'LIKE','%'.$keyword.'%');
+        }
+        $data = $data->paginate(10);
         // dd($data);
         return view('barang.index',compact('data'));
     }
