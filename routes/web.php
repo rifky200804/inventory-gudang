@@ -19,7 +19,7 @@ Route::group(['prefix'=>'auth','as'=>'auth.'], function(){
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/dashboard','DashboardController@index')->name('dashboard');
+    Route::get('/','DashboardController@index')->name('dashboard');
     Route::group(['prefix'=>'gudang','as'=>'gudang.'], function(){
         Route::get('/', 'GudangController@index')->name('index');
         Route::get('/create', 'GudangController@create')->name('create');
@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::group(['prefix'=>'barang','as'=>'barang.'], function(){
         Route::get('/', 'BarangController@index')->name('index');
+        Route::get('/download/pdf', 'BarangController@printPDF')->name('print.pdf');
         Route::get('/create', 'BarangController@create')->name('create');
         Route::post('/store', 'BarangController@store')->name('store');
         Route::get('/{id}', 'BarangController@show')->name('show');

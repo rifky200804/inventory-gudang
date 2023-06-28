@@ -1,4 +1,13 @@
 @extends('layouts.app')
+
+@push('css')
+<link rel="stylesheet" href="{{asset('admin/vendors/mdi/css/materialdesignicons.min.css')}}">
+@endpush
+
+@push('js')
+<script src="{{asset('vendors/js/vendor.bundle.base.js')}}"></script>
+@endpush
+
 @section('content')
     <div class="card">
         <div class="card-body">
@@ -12,6 +21,9 @@
                     </div>
                     <div class="col-md-1 col-sm1" >
                         <button type="submit" class="btn btn-info" style=""><i class="typcn typcn-zoom"></i></button>
+                    </div>
+                    <div class="col-md-1 col-sm1" >
+                        <a  class="btn btn-info" href="/barang/download/pdf?@php if(isset($keyword)){ echo "keyword=$keyword"; } @endphp"><i class="mdi mdi-file" style="color: white"></i></a>
                     </div>
             </form>
             <div class="table-responsive">

@@ -7,6 +7,7 @@ use App\Gudang;
 use App\KategoriBarang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class BarangController extends Controller
 {
@@ -21,7 +22,7 @@ class BarangController extends Controller
                 ->join('kategori_barangs as b','a.kategori_id','=','b.id')
                 ->join('gudangs as c','a.gudang_id','=','c.id')
                 ->select('a.*','b.nama_kategori as nama_kategori','c.nama_gudang as nama_gudang');
-
+        $keyword = "";
         if(isset($request->keyword) && $request->keyword != ""){
             $keyword = $request->keyword;
             $data = $data->where("a.kode_barang",'LIKE','%'.$keyword.'%')
@@ -31,7 +32,7 @@ class BarangController extends Controller
         }
         $data = $data->paginate(10);
         // dd($data);
-        return view('barang.index',compact('data'));
+        return view('barang.index',compact('data','keyword'));
     }
 
     /**
@@ -135,4 +136,24 @@ class BarangController extends Controller
 
         return redirect()->route('barang.index')->with('success', 'barang berhasil dihapus');
     }
+
+    public function printPDF(Request $request){
+        $data = DB::table('barangs as a')
+                ->join('kategori_barangs as b','a.kategori_id','=','b.id')
+                ->join('gudangs as c','a.gudang_id','=','c.id')
+                ->select('a.*','b.nama_kategori as nama_kategori','c.nama_gudang as nama_gudang');
+
+        if(isset($request->keyword) && $request->keyword != ""){
+            $keyword = $request->keyword;
+            $data = $data->where("a.kode_barang",'LIKE','%'.$keyword.'%')
+                    ->orWhere("a.nama_barang",'LIKE','%'.$keyword.'%')
+                    ->orWhere("b.nama_kategori",'LIKE','%'.$keyword.'%')
+                    ->orWhere("c.nama_gudang",'LIKE','%'.$keyword.'%');
+        }
+        $data = $data->get();
+    $pdf = PDF::loadView('barang.pdf',['data'=>$data]);
+    $nameFile = "Data Barang_".time().".pdf";
+    return $pdf->download($nameFile);
+    }
+    
 }
