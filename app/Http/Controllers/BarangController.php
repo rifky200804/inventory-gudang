@@ -61,6 +61,7 @@ class BarangController extends Controller
         //akses kolom kode terus isi dengan data input kode user
         $barang->kode_barang = $request->kode_barang;
         $barang->nama_barang = $request->nama_barang;
+        $barang->stok_barang = $request->stok_barang;
         $barang->kategori_id = $request->kategori_id;
         $barang->gudang_id = $request->gudang_id;
         $barang->created_by = Auth::user()->name;
@@ -119,6 +120,7 @@ class BarangController extends Controller
         $barang = Barang::find($id);
         $barang->kode_barang = $request->kode_barang;
         $barang->nama_barang = $request->nama_barang;
+        $barang->stok_barang = $request->stok_barang;
         $barang->kategori_id = $request->kategori_id;
         $barang->gudang_id = $request->gudang_id;
         $barang->updated_by = Auth::user()->name;
