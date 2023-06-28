@@ -28,7 +28,7 @@
                                 <a href="{{ route('kategori.show',$value->id) }}" class="badge badge-info">Show</a>
                                 <a href="{{ route('kategori.edit',$value->id) }}" class="badge badge-warning">Edit</a>
                                 <a href="{{ url('kategori/delete/' . $value->id) }}" class="badge badge-danger"
-                                    onclick="return confirm('Apakah Anda yakin ingin menghapus produk?')">Delete</a>
+                                    onclick="return confirm('Apakah Anda yakin ingin menghapus kategori?')">Delete</a>
                             </td>
                         </tr>
                     </tbody>

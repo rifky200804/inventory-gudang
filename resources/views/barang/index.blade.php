@@ -1,43 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory</title>
-</head>
-<body>
-    <h1>Data Barang</h1>
-    <a class="btn btn-primary" href="{{ url('barang/create') }}">Create</a>
-    <table cellspacing = "0px" cellpadding="5px" border="1">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Kode Barang</th>
-                <th>Nama Barang</th>
-                <th>Kategori ID</th>
-                <th>Gudang ID</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        @php $no = 0; @endphp
-        @foreach($data as $key => $value)
-        <tbody>
-            <tr>
-                <td>{{$no+1}}</td>
-                <td>{{$value->kode_barang}}</td>
-                <td>{{$value->nama_barang}}</td>
-                <td>{{$value->kategori_id}}</td>
-                <td>{{$value->gudang_id}}</td>
-                <td>
-                    <a href="{{ route('barang.show',$value->id) }}">Show</a>
-                    <a href="{{ route('barang.edit',$value->id) }}">Edit</a>
-                    <a href="{{ url('barang/delete/' . $value->id) }}" class="btn btn-danger"
-                        onclick="return confirm('Apakah Anda yakin ingin menghapus produk?')">Delete</a>
-                </td>
-            </tr>
-        </tbody>
-        @php $no++; @endphp
-        @endforeach
-    </table>
-</body>
-</html>
+@extends('layouts.app')
+@section('content')
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Data Barang</h4>
+            <p class="card-description">
+                <code><a href="{{ route('kategori.create') }}">Tambah Data Barang</a></code>
+            </p>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode Barang</th>
+                            <th>Nama Barang</th>
+                            <th>Kategori ID</th>
+                            <th>Gudang ID</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    @php $no = 0; @endphp
+                    @foreach ($data as $key => $value)
+                        <tbody>
+                            <tr>
+                                <td>{{ $no + 1 }}</td>
+                                <td>{{ $value->kode_barang }}</td>
+                                <td>{{ $value->nama_barang }}</td>
+                                <td>{{ $value->kategori_id }}</td>
+                                <td>{{ $value->gudang_id }}</td>
+                                <td>
+                                    <a href="{{ route('barang.show', $value->id) }}" class="badge badge-info">Show</a>
+                                    <a href="{{ route('barang.edit', $value->id) }}" class="badge badge-warning">Edit</a>
+                                    <a href="{{ url('barang/delete/' . $value->id) }}" class="badge badge-danger"
+                                        onclick="return confirm('Apakah Anda yakin ingin menghapus barang?')">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        @php $no++; @endphp
+                    @endforeach
+                </table>
+                <div class="row">
+                    <div class="col-6 d-flex justify-content-start">
+                        Halaman : {{ $data->currentPage() }} <br />
+                        Jumlah Data : {{ $data->total() }} <br />
+                        Data Per Halaman : {{ $data->perPage() }} <br />
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                        {{ $data->links() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
