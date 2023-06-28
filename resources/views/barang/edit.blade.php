@@ -23,6 +23,12 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="stok_barang" class="col-4 col-form-label">Stok Barang</label>
+                    <div class="col-8">
+                        <input id="stok_barang" name="stok_barang" type="text" class="form-control" value="{{ $barang->stok_barang }}">
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="kategori_id" class="col-4 col-form-label">Kategori ID</label>
                     <div class="col-8">
                         <select id="kategori_id" name="kategori_id" class="custom-select">

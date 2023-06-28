@@ -33,6 +33,7 @@
                             <th>No</th>
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
+                            <th>Stok Barang</th>
                             <th>Kategori</th>
                             <th>Gudang</th>
                             <th>Aksi</th>
@@ -45,6 +46,7 @@
                                 <td>{{ $no + 1 }}</td>
                                 <td>{{ $value->kode_barang }}</td>
                                 <td>{{ $value->nama_barang }}</td>
+                                <td>{{ $value->stok_barang }}</td>
                                 <td>{{ $value->nama_kategori }}</td>
                                 <td>{{ $value->nama_gudang }}</td>
                                 <td>

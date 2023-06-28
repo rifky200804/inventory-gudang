@@ -8,7 +8,7 @@
             </p>
             {{-- <div class="table-responsive"> --}}
             <div class="form-group row">
-                <label for="kode" class="col-4 col-form-label">Nama Barang</label>
+                <label for="" class="col-4 col-form-label">Nama Barang</label>
                 <div class="col-8">
                     : {{ $data->nama_barang }}
                 </div>
@@ -20,13 +20,19 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="kode" class="col-4 col-form-label">Kategori ID</label>
+                <label for="" class="col-4 col-form-label">Stok Barang</label>
+                <div class="col-8">
+                    : {{ $data->stok_barang }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-4 col-form-label">Kategori ID</label>
                 <div class="col-8">
                     : {{ $data->kategori_id }}
                 </div>
             </div>
             <div class="form-group row">
-                <label for="nama" class="col-4 col-form-label">Gudang ID</label>
+                <label for="" class="col-4 col-form-label">Gudang ID</label>
                 <div class="col-8">
                     : {{ $data->gudang_id }}
                 </div>

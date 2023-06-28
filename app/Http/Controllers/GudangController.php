@@ -46,6 +46,7 @@ class GudangController extends Controller
         //akses kolom kode terus isi dengan data input kode user
         $gudang->kode_gudang = $request->kode_gudang;
         $gudang->nama_gudang = $request->nama_gudang;
+        $gudang->created_by = Auth::user()->name;
         //simpen data ke database
         $gudang->save();
         //nampilin ke url produk
@@ -98,6 +99,7 @@ class GudangController extends Controller
         $gudang = Gudang::find($id);
         $gudang->kode_gudang = $request->kode_gudang;
         $gudang->nama_gudang = $request->nama_gudang;
+        $gudang->updated_by = Auth::user()->name;
         $gudang->save();
         return redirect()->route('gudang.index');
     }

@@ -47,6 +47,7 @@ class KategoriBarangController extends Controller
         //akses kolom kode terus isi dengan data input kode user
         $kategori->kode_kategori = $request->kode_kategori;
         $kategori->nama_kategori = $request->nama_kategori;
+        $kategori->created_by = Auth::user()->name;
         //simpen data ke database
         $kategori->save();
         //nampilin ke url produk
@@ -100,6 +101,7 @@ class KategoriBarangController extends Controller
         $kategori = KategoriBarang::find($id);
         $kategori->kode_kategori = $request->kode_kategori;
         $kategori->nama_kategori = $request->nama_kategori;
+        $kategori->updated_by = Auth::user()->name;
         $kategori->save();
         return redirect()->route('kategori.index');
     }

@@ -8,6 +8,7 @@ use App\KategoriBarang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use Illuminate\Support\Facades\Auth;
 
 class BarangController extends Controller
 {
@@ -21,7 +22,7 @@ class BarangController extends Controller
         $data = DB::table('barangs as a')
                 ->join('kategori_barangs as b','a.kategori_id','=','b.id')
                 ->join('gudangs as c','a.gudang_id','=','c.id')
-                ->select('a.*','b.nama_kategori as nama_kategori','c.nama_gudang as nama_gudang');
+                ->select('a.*','b.nama_kategori as nama_kategori','c.nama_gudang as nama_gudang')->where('a.stok_barang','!=',0);
         $keyword = "";
         if(isset($request->keyword) && $request->keyword != ""){
             $keyword = $request->keyword;
@@ -62,6 +63,7 @@ class BarangController extends Controller
         $barang->nama_barang = $request->nama_barang;
         $barang->kategori_id = $request->kategori_id;
         $barang->gudang_id = $request->gudang_id;
+        $barang->created_by = Auth::user()->name;
         //simpen data ke database
         $barang->save();
         //nampilin ke url produk
@@ -119,6 +121,7 @@ class BarangController extends Controller
         $barang->nama_barang = $request->nama_barang;
         $barang->kategori_id = $request->kategori_id;
         $barang->gudang_id = $request->gudang_id;
+        $barang->updated_by = Auth::user()->name;
         $barang->save();
         return redirect()->route('barang.index');
     }
@@ -141,7 +144,7 @@ class BarangController extends Controller
         $data = DB::table('barangs as a')
                 ->join('kategori_barangs as b','a.kategori_id','=','b.id')
                 ->join('gudangs as c','a.gudang_id','=','c.id')
-                ->select('a.*','b.nama_kategori as nama_kategori','c.nama_gudang as nama_gudang');
+                ->select('a.*','b.nama_kategori as nama_kategori','c.nama_gudang as nama_gudang')->where('a.stok_barang','!=',0);
 
         if(isset($request->keyword) && $request->keyword != ""){
             $keyword = $request->keyword;
