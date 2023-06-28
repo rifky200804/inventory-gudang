@@ -8,7 +8,7 @@
                         </div>
                         <div class="sidebar-profile-name">
                             <p class="sidebar-name">
-                                Kenneth Osborne
+                                {{Auth::user()->name}}
                             </p>
                             <p class="sidebar-designation">
                                 Welcome
