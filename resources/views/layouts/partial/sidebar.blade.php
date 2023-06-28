@@ -17,7 +17,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{url('/')}}">
                         <i class="typcn typcn-home menu-icon"></i>
                         <span class="menu-title">Dashboard</span>
                     </a>
