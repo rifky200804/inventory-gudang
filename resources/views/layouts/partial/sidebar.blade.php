@@ -62,5 +62,17 @@
                             <li class="nav-item"><a class="nav-link" href="{{route('kategori.index')}}">Data Kategori Barang</a></li>
                         </ul>
                     </div>
+                </li><li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false"
+                        aria-controls="ui-basic4">
+                        <i class="typcn typcn-film menu-icon"></i>
+                        <span class="menu-title">User</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic4">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('user.index')}}">Data User</a></li>
+                        </ul>
+                    </div>
                 </li>
         </nav>
