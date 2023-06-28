@@ -15,7 +15,7 @@ class CreateGudangsTable extends Migration
     {
         Schema::create('gudangs', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_gudang',100);
+            $table->string('kode_gudang',50);
             $table->string('nama_gudang',100);
             $table->timestamps();
             $table->string('created_by',100)->nullable();
