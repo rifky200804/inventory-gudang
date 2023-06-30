@@ -16,7 +16,7 @@
 
     @stack('css')
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{asset('admin/images/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{asset('admin/images/rp-logo.png')}}" />
   </head>
   <body>
     <div class="container-scroller">
