@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Gudang;
 use Illuminate\Http\Request;
+use Auth;
 
 class GudangController extends Controller
 {

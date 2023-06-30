@@ -5,7 +5,7 @@
         <div class="card-body">
             <h4 class="card-title">Data Gudang</h4>
             <p class="card-description">
-                <code><a href="">Tambah Data</a></code>
+                <code><a href="{{route('gudang.create')}}">Tambah Data</a></code>
             </p>
             <form action="{{ route('gudang.index') }}" method="get" class="d-flex justify-content-end">
                 <div class="col-md-3 col-sm-6 d-flex justify-content-end">
